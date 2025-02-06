@@ -1,30 +1,10 @@
 import React, { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import { Box, Text } from "@chakra-ui/react";
 
-interface GamesInterface {
-  id: number;
-  name: string;
-}
-interface FetchedGames {
-  count: number;
-  results: GamesInterface[];
-}
+import { Box, Text } from "@chakra-ui/react";
+import useGames from "../hook/useGames";
 
 function GameGrid() {
-  const [games, setGames] = useState<GamesInterface[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    apiClient
-      .get<FetchedGames>("games")
-      .then((res) => {
-        setGames(res.data.results);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
-  }, []);
+  const { games, setGames, error } = useGames();
 
   return (
     <div>
