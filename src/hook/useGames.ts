@@ -4,6 +4,8 @@ import apiClient from "../services/api-client";
 export interface GamesInterface {
     id: number;
     name: string;
+    background_image: string;
+    released: string;
 }
 
 export interface FetchedGames {
