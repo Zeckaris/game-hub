@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hook/useGames";
 import GamesCard from "./GamesCard";
 
@@ -23,6 +23,7 @@ function GameGrid() {
               name={game.name}
               background_image={game.background_image}
               released={game.released}
+              parent_platforms={game.parent_platforms}
             />
           );
         })}
