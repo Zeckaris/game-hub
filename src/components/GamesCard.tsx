@@ -2,6 +2,7 @@ import { GamesInterface } from "../hook/useGames";
 import { Card, Image, HStack } from "@chakra-ui/react";
 import PlatfromMapping from "./PlatfromMapping";
 import MetaCriticRating from "./MetaCriticRating";
+import getCropedImage from "../services/image-service";
 
 function GamesCard({
   id,
@@ -13,7 +14,7 @@ function GamesCard({
 }: GamesInterface) {
   return (
     <Card.Root maxW="sm" overflow="hidden">
-      <Image src={background_image} alt={name + " image"} />
+      <Image src={getCropedImage(background_image)} alt={name + " image"} />
       <Card.Body gap="2">
         <Card.Title>{name}</Card.Title>
         <HStack padding={2} overflowX="auto">
