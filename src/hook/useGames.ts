@@ -13,6 +13,7 @@ export interface GamesInterface {
     background_image: string;
     released: string;
     parent_platforms:{platform:ParentPlatform}[];
+    metacritic: number;
 }
 
 export interface FetchedGames {

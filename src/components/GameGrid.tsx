@@ -1,5 +1,3 @@
-import React from "react";
-
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hook/useGames";
 import GamesCard from "./GamesCard";
@@ -24,6 +22,7 @@ function GameGrid() {
               background_image={game.background_image}
               released={game.released}
               parent_platforms={game.parent_platforms}
+              metacritic={game.metacritic}
             />
           );
         })}

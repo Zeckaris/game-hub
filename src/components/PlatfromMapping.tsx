@@ -32,10 +32,10 @@ function PlatfromMapping({ parent_platforms }: Props) {
   };
 
   return (
-    <HStack>
+    <>
       {parent_platforms.map((p) => {
         return (
-          <>
+          <HStack padding={1}>
             {p.platform.name in platformIcons ? (
               <Icon
                 key={p.platform.id}
@@ -45,10 +45,10 @@ function PlatfromMapping({ parent_platforms }: Props) {
             ) : (
               <span>{p.platform.name}</span>
             )}
-          </>
+          </HStack>
         );
       })}
-    </HStack>
+    </>
   );
 }
 
