@@ -13,7 +13,7 @@ function GamesCard({
   metacritic,
 }: GamesInterface) {
   return (
-    <Card.Root maxW="sm" overflow="hidden">
+    <Card.Root height="95%">
       <Image src={getCropedImage(background_image)} alt={name + " image"} />
       <Card.Body gap="2">
         <Card.Title>{name}</Card.Title>
