@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
+import useData from "./useData";
 
 
 export interface GameGenere {
@@ -15,28 +14,9 @@ export interface GameGenereResult {
 
 
 const useGeneres=()=>{
+  const {data:genere, setData:setGenere, error:errorGenere}= useData<GameGenere>("genres");
 
-const [genere, setGenere] = useState<GameGenere[]>([]);
-  const [errorGenere, setErrorGenere] = useState("");
-  const controler=  new AbortController();
-  const cancel= ()=>{
-    return controler.abort();
-  }
-  useEffect(() => {
-    apiClient
-      .get<GameGenereResult>("genres")
-      .then((res) => {
-        setGenere(res.data.results);
-        console.log(res.data.results);
-      })
-      .catch((err) => {
-        setErrorGenere(err.message);
-      });
-
-      return cancel
-  }, []);
-
-  return {genere,setGenere, errorGenere, setErrorGenere}
+  return {genere,setGenere, errorGenere}
 
 }
 

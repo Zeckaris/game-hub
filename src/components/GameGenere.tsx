@@ -1,7 +1,7 @@
 import useGeneres from "../hook/useGeneres";
 
 function GameGenere() {
-  const { genere, setGenere, errorGenere, setErrorGenere } = useGeneres();
+  const { genere, setGenere, errorGenere } = useGeneres();
   return (
     <div>
       {errorGenere && <span>{errorGenere}</span>}
