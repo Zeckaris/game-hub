@@ -4,15 +4,21 @@ import {
   Image,
   List,
   ListItem,
-  StackSeparator,
+  Spinner,
   Text,
-  VStack,
 } from "@chakra-ui/react";
 
 import useGeneres from "../hook/useGeneres";
 
 function GameGenere() {
-  const { genere, setGenere, errorGenere } = useGeneres();
+  const { genere, isLoading, errorGenere } = useGeneres();
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+  if (errorGenere) {
+    return null;
+  }
   return (
     <Box padding="6">
       {errorGenere && <span>{errorGenere}</span>}
