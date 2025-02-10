@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
+import { AxiosRequestConfig } from "axios";
 
 interface ApiResponse <T>{
         count: number;
         results: T[];
 }
 
-const  useData=<T>(endpoint:string)=>{
+const  useData=<T>(endpoint:string, requestConfig?:AxiosRequestConfig, dependencies?:any[])=>{
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading]= useState(false);
@@ -19,9 +20,10 @@ const  useData=<T>(endpoint:string)=>{
       }
       
   setIsLoading(true);
-      apiClient.get<ApiResponse<T>>(endpoint).then((res) => {
+      apiClient.get<ApiResponse<T>>(endpoint, {...requestConfig}).then((res) => {
           setIsLoading(false);
           setData(res.data.results);
+          console.log(data);
           
         })
         .catch((err) => {
@@ -32,7 +34,7 @@ const  useData=<T>(endpoint:string)=>{
 
         return cancel
  
-  }, []);
+  }, dependencies? dependencies : []);
 
   return {data,setData, error, isLoading}
    

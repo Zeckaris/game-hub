@@ -1,16 +1,22 @@
 import {
   Box,
+  Button,
   HStack,
   Image,
+  Link,
   List,
   ListItem,
   Spinner,
   Text,
 } from "@chakra-ui/react";
 
-import useGeneres from "../hook/useGeneres";
+import useGeneres, { GenereInterface } from "../hook/useGeneres";
 
-function GameGenere() {
+interface Props {
+  updateSelectedGames: (genere: GenereInterface) => void;
+}
+
+function GameGenere({ updateSelectedGames }: Props) {
   const { genere, isLoading, errorGenere } = useGeneres();
 
   if (isLoading) {
@@ -20,7 +26,10 @@ function GameGenere() {
     return null;
   }
   return (
-    <Box padding="6">
+    <Box padding="2">
+      <Text fontWeight="bold" fontSize={24} margin={1}>
+        Generes
+      </Text>
       {errorGenere && <span>{errorGenere}</span>}
       <List.Root gap={3} height={"100vh"} listStyleType="none">
         {genere.map((g) => (
@@ -33,7 +42,16 @@ function GameGenere() {
                 mr="2"
               />
 
-              <Text fontWeight="semibold">{g.name}</Text>
+              <Button
+                fontWeight="semibold"
+                variant="ghost"
+                onClick={() => {
+                  updateSelectedGames(g);
+                }}
+              >
+                {" "}
+                <Link>{g.name}</Link>{" "}
+              </Button>
             </HStack>
           </ListItem>
         ))}

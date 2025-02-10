@@ -1,4 +1,5 @@
 import useData from "./useData";
+import { GenereInterface } from "./useGeneres";
 
 export interface ParentPlatform{
     id:number;
@@ -17,8 +18,8 @@ export interface GamesInterface {
 
 
 
-const useGames = ()=>{
-   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games");
+const useGames = (genere?:GenereInterface | null)=>{
+   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games" ,{params:{genres:genere?.id}}, [genere]);
    return {games,setGames,error,isLoading }
 }
 

@@ -13,6 +13,8 @@ export interface GameGenereResult {
 }
 
 
+
+
 const useGeneres=()=>{
   const {data:genere, setData:setGenere, error:errorGenere, isLoading}= useData<GameGenere>("genres");
 

@@ -3,9 +3,15 @@ import { Button, Grid, GridItem, HStack } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
-import GameGenere from "./components/GameGenere";
+import GameGenere from "./components/GameGenere"; //this is the component
+import { GenereInterface } from "./hook/useGeneres";
 
 function App() {
+  const [selectedGamesGenre, setSelectedGamesGenre] =
+    useState<GenereInterface | null>(null);
+  const updateSelectedGames = (genere: GenereInterface) => {
+    setSelectedGamesGenre(genere);
+  };
   return (
     <>
       <Grid
@@ -20,11 +26,11 @@ function App() {
           display={{ base: "none", lg: "block" }}
           width={250}
         >
-          <GameGenere />
+          <GameGenere updateSelectedGames={updateSelectedGames} />
         </GridItem>
 
         <GridItem area={"main"} padding={2}>
-          <GameGrid />
+          <GameGrid selectedGamesGenere={selectedGamesGenre} />
         </GridItem>
       </Grid>
     </>
