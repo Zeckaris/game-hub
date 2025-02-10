@@ -15,11 +15,15 @@ function App() {
           <NavBar />
         </GridItem>
 
-        <GridItem area={"aside"} display={{ base: "none", lg: "block" }}>
+        <GridItem
+          area={"aside"}
+          display={{ base: "none", lg: "block" }}
+          width={250}
+        >
           <GameGenere />
         </GridItem>
 
-        <GridItem area={"main"}>
+        <GridItem area={"main"} padding={2}>
           <GameGrid />
         </GridItem>
       </Grid>

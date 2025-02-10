@@ -15,7 +15,7 @@ function GamesCard({
   return (
     <Card.Root height="95%">
       <Image src={getCropedImage(background_image)} alt={name + " image"} />
-      <Card.Body gap="2">
+      <Card.Body gap="1">
         <Card.Title>{name}</Card.Title>
         <HStack padding={2} overflowX="auto">
           <PlatfromMapping parent_platforms={parent_platforms} />
