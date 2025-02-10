@@ -14,9 +14,10 @@ import useGeneres, { GenereInterface } from "../hook/useGeneres";
 
 interface Props {
   updateSelectedGames: (genere: GenereInterface) => void;
+  selectedGamesGenre: GenereInterface | null;
 }
 
-function GameGenere({ updateSelectedGames }: Props) {
+function GameGenere({ updateSelectedGames, selectedGamesGenre }: Props) {
   const { genere, isLoading, errorGenere } = useGeneres();
 
   if (isLoading) {
@@ -43,7 +44,7 @@ function GameGenere({ updateSelectedGames }: Props) {
               />
 
               <Button
-                fontWeight="semibold"
+                fontWeight={selectedGamesGenre?.id === g.id ? "700" : "200"}
                 variant="ghost"
                 onClick={() => {
                   updateSelectedGames(g);

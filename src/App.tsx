@@ -26,7 +26,10 @@ function App() {
           display={{ base: "none", lg: "block" }}
           width={250}
         >
-          <GameGenere updateSelectedGames={updateSelectedGames} />
+          <GameGenere
+            updateSelectedGames={updateSelectedGames}
+            selectedGamesGenre={selectedGamesGenre}
+          />
         </GridItem>
 
         <GridItem area={"main"} padding={2}>
