@@ -11,10 +11,10 @@ import usePlatform, { PlatformInterface } from "../hook/usePlatform";
 import { BsChevronDoubleDown } from "react-icons/bs";
 
 interface Props {
-  updateSelectedPlatform: (p: PlatformInterface) => void;
+  updateSelectedGamesPlatform: (p: PlatformInterface) => void;
 }
 
-function Platform({ updateSelectedPlatform }: Props) {
+function Platform({ updateSelectedGamesPlatform }: Props) {
   const { platforms, error } = usePlatform();
   if (error !== "") {
     return null;
@@ -25,9 +25,7 @@ function Platform({ updateSelectedPlatform }: Props) {
       <MenuTrigger asChild>
         <Button variant="outline" size="md">
           Platforms{" "}
-          <Icon fontSize="2xl" color="pink.700">
-            <BsChevronDoubleDown />
-          </Icon>
+          <Icon as={BsChevronDoubleDown} fontSize="2xl" color="pink.700" />
         </Button>
       </MenuTrigger>
       <MenuContent width={"md"}>
@@ -36,7 +34,7 @@ function Platform({ updateSelectedPlatform }: Props) {
             key={p.id}
             value={p.name}
             onClick={() => {
-              updateSelectedPlatform(p);
+              updateSelectedGamesPlatform(p);
             }}
           >
             {p.name}

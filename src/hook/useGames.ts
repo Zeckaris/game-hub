@@ -1,6 +1,6 @@
+import { GameQuery } from "../App";
 import useData from "./useData";
-import { GenereInterface } from "./useGeneres";
-import { PlatformInterface } from "./usePlatform";
+
 
 export interface ParentPlatform{
     id:number;
@@ -19,8 +19,8 @@ export interface GamesInterface {
 
 
 
-const useGames = (genere?:GenereInterface | null, platform?:PlatformInterface | null)=>{
-   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games" ,{params:{genres:genere?.id, platforms:platform?.id}}, [genere,platform]);
+const useGames = (gameQuery:GameQuery)=>{
+   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games" ,{params:{genres:gameQuery.generes?.id, platforms:gameQuery.platforms?.id}}, [gameQuery]);
    return {games,setGames,error,isLoading }
 }
 

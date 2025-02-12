@@ -11,13 +11,14 @@ import {
 } from "@chakra-ui/react";
 
 import useGeneres, { GenereInterface } from "../hook/useGeneres";
+import { GameQuery } from "../App";
 
 interface Props {
-  updateSelectedGames: (genere: GenereInterface) => void;
-  selectedGamesGenre: GenereInterface | null;
+  updateSelectedGamesGenere: (genere: GenereInterface) => void;
+  gameQuery: GameQuery;
 }
 
-function GameGenere({ updateSelectedGames, selectedGamesGenre }: Props) {
+function GameGenere({ updateSelectedGamesGenere, gameQuery }: Props) {
   const { genere, isLoading, errorGenere } = useGeneres();
 
   if (isLoading) {
@@ -44,10 +45,10 @@ function GameGenere({ updateSelectedGames, selectedGamesGenre }: Props) {
               />
 
               <Button
-                fontWeight={selectedGamesGenre?.id === g.id ? "700" : "200"}
+                fontWeight={gameQuery.generes?.id === g.id ? "700" : "200"}
                 variant="ghost"
                 onClick={() => {
-                  updateSelectedGames(g);
+                  updateSelectedGamesGenere(g);
                 }}
               >
                 {" "}
