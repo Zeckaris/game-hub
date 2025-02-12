@@ -6,13 +6,19 @@ import GamesCardContainer from "./GamesCardContainer";
 import Platform from "./Platform";
 import { PlatformInterface } from "../hook/usePlatform";
 import { GameQuery } from "../App";
+import SortGames from "./SortGames";
 
 interface Props {
   gameQuery: GameQuery;
   updateSelectedGamesPlatform: (p: PlatformInterface) => void;
+  orderBySelection: (o: string) => void;
 }
 
-function GameGrid({ gameQuery, updateSelectedGamesPlatform }: Props) {
+function GameGrid({
+  gameQuery,
+  updateSelectedGamesPlatform,
+  orderBySelection,
+}: Props) {
   const { games, error, isLoading } = useGames(gameQuery);
   const skeletonCount = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -21,6 +27,7 @@ function GameGrid({ gameQuery, updateSelectedGamesPlatform }: Props) {
       {error && <Text> {error} </Text>}
       <Box>
         <Platform updateSelectedGamesPlatform={updateSelectedGamesPlatform} />{" "}
+        <SortGames orderBySelection={orderBySelection} />
       </Box>
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={10} padding={"10px"}>
         {isLoading

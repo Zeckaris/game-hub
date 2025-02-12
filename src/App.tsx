@@ -10,6 +10,7 @@ import { PlatformInterface } from "./hook/usePlatform";
 export interface GameQuery {
   generes: GenereInterface | null;
   platforms: PlatformInterface | null;
+  ordering: string;
 }
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
   };
   const updateSelectedGamesPlatform = (platforms: PlatformInterface) => {
     setGameQuery({ ...gameQuery, platforms });
+  };
+  const orderBySelection = (ordering: string) => {
+    setGameQuery({ ...gameQuery, ordering });
   };
   return (
     <>
@@ -45,6 +49,7 @@ function App() {
           <GameGrid
             gameQuery={gameQuery}
             updateSelectedGamesPlatform={updateSelectedGamesPlatform}
+            orderBySelection={orderBySelection}
           />
         </GridItem>
       </Grid>
