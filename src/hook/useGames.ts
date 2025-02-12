@@ -18,8 +18,8 @@ export interface GamesInterface {
 
 
 
-const useGames = (genere?:GenereInterface | null)=>{
-   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games" ,{params:{genres:genere?.id}}, [genere]);
+const useGames = (genere?:GenereInterface | null, platformId?:number)=>{
+   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games" ,{params:{genres:genere?.id, platforms:platformId}}, [genere,platformId]);
    return {games,setGames,error,isLoading }
 }
 
