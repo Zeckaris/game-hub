@@ -6,20 +6,22 @@ import GamesCardContainer from "./GamesCardContainer";
 import { GenereInterface } from "../hook/useGeneres";
 import Platform from "./Platform";
 import { useState } from "react";
+import { PlatformInterface } from "../hook/usePlatform";
 
 interface Props {
   selectedGamesGenere: GenereInterface | null;
 }
 
 function GameGrid({ selectedGamesGenere }: Props) {
-  const [selectedGamePlatform, setSelectedGamePlatform] = useState<number>();
-  const { games, setGames, error, isLoading } = useGames(
+  const [selectedGamePlatform, setSelectedGamePlatform] =
+    useState<PlatformInterface>();
+  const { games, error, isLoading } = useGames(
     selectedGamesGenere,
     selectedGamePlatform
   );
   const skeletonCount = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  const updateSelectedPlatform = (p: number) => {
+  const updateSelectedPlatform = (p: PlatformInterface) => {
     setSelectedGamePlatform(p);
     console.log("updated selected platform");
   };

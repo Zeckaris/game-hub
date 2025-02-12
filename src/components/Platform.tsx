@@ -1,35 +1,49 @@
-import { Box, NativeSelectRoot, NativeSelectField } from "@chakra-ui/react";
+import {
+  MenuRoot,
+  Button,
+  MenuContent,
+  MenuItem,
+  MenuTrigger,
+  Icon,
+} from "@chakra-ui/react";
 
-import usePlatform from "../hook/usePlatform";
+import usePlatform, { PlatformInterface } from "../hook/usePlatform";
+import { BsChevronDoubleDown } from "react-icons/bs";
 
 interface Props {
-  updateSelectedPlatform: (p: number) => void;
+  updateSelectedPlatform: (p: PlatformInterface) => void;
 }
 
 function Platform({ updateSelectedPlatform }: Props) {
-  const { platforms, setPlatforms, error, isLoading } = usePlatform();
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    updateSelectedPlatform(parseInt(e.target.value));
-  };
+  const { platforms, error } = usePlatform();
+  if (error !== "") {
+    return null;
+  }
 
   return (
-    <Box padding="1">
-      {error && <span>{error}</span>}
-      <NativeSelectRoot size="sm" width="300px">
-        <NativeSelectField
-          placeholder="Platforms"
-          onChange={(e) => {
-            handleChange(e);
-          }}
-        >
-          {platforms.map((p) => (
-            <option value={p.id.toString()} key={p.id}>
-              {p.name}
-            </option>
-          ))}
-        </NativeSelectField>
-      </NativeSelectRoot>
-    </Box>
+    <MenuRoot size={"md"}>
+      <MenuTrigger asChild>
+        <Button variant="outline" size="md">
+          Platforms{" "}
+          <Icon fontSize="2xl" color="pink.700">
+            <BsChevronDoubleDown />
+          </Icon>
+        </Button>
+      </MenuTrigger>
+      <MenuContent width={"md"}>
+        {platforms.map((p) => (
+          <MenuItem
+            key={p.id}
+            value={p.name}
+            onClick={() => {
+              updateSelectedPlatform(p);
+            }}
+          >
+            {p.name}
+          </MenuItem>
+        ))}
+      </MenuContent>
+    </MenuRoot>
   );
 }
 
