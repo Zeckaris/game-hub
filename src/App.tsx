@@ -16,17 +16,21 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [gamesHeading, setGamesHeading] = useState("");
 
   const updateSelectedGamesGenere = (generes: GenereInterface) => {
+    setGamesHeading(generes.name);
     setGameQuery({ ...gameQuery, generes });
   };
   const updateSelectedGamesPlatform = (platforms: PlatformInterface) => {
+    setGamesHeading(platforms.name);
     setGameQuery({ ...gameQuery, platforms });
   };
   const orderBySelection = (ordering: string) => {
     setGameQuery({ ...gameQuery, ordering });
   };
   const searchGame = (s: string) => {
+    setGamesHeading(s);
     setGameQuery({ ...gameQuery, search: s });
   };
   return (
@@ -54,6 +58,7 @@ function App() {
             gameQuery={gameQuery}
             updateSelectedGamesPlatform={updateSelectedGamesPlatform}
             orderBySelection={orderBySelection}
+            gamesHeading={gamesHeading}
           />
         </GridItem>
       </Grid>

@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hook/useGames";
 import GamesCard from "./GamesCard";
 import GamesCardSkeleton from "./GamesCardSkeleton";
@@ -12,12 +12,14 @@ interface Props {
   gameQuery: GameQuery;
   updateSelectedGamesPlatform: (p: PlatformInterface) => void;
   orderBySelection: (o: string) => void;
+  gamesHeading: string;
 }
 
 function GameGrid({
   gameQuery,
   updateSelectedGamesPlatform,
   orderBySelection,
+  gamesHeading,
 }: Props) {
   const { games, error, isLoading } = useGames(gameQuery);
   const skeletonCount = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -25,7 +27,11 @@ function GameGrid({
   return (
     <div>
       {error && <Text> {error} </Text>}
-      <Box>
+      <Box textAlign={"center"}>
+        <Heading size="4xl">{gamesHeading} Games</Heading>{" "}
+      </Box>
+
+      <Box mt={2}>
         <Platform updateSelectedGamesPlatform={updateSelectedGamesPlatform} />{" "}
         <SortGames orderBySelection={orderBySelection} />
       </Box>
