@@ -20,7 +20,7 @@ export interface GamesInterface {
 
 
 const useGames = (gameQuery:GameQuery)=>{
-   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games" ,{params:{genres:gameQuery.generes?.id, platforms:gameQuery.platforms?.id, ordering:gameQuery.ordering}}, [gameQuery]);
+   const  {data: games, setData: setGames, error, isLoading} = useData<GamesInterface>("games" ,{params:{genres:gameQuery.generes?.id, platforms:gameQuery.platforms?.id, ordering:gameQuery.ordering, search:gameQuery.search}}, [gameQuery]);
    return {games,setGames,error,isLoading }
 }
 

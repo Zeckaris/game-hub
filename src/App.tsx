@@ -11,6 +11,7 @@ export interface GameQuery {
   generes: GenereInterface | null;
   platforms: PlatformInterface | null;
   ordering: string;
+  search: string;
 }
 
 function App() {
@@ -25,13 +26,16 @@ function App() {
   const orderBySelection = (ordering: string) => {
     setGameQuery({ ...gameQuery, ordering });
   };
+  const searchGame = (s: string) => {
+    setGameQuery({ ...gameQuery, search: s });
+  };
   return (
     <>
       <Grid
         templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
       >
         <GridItem area={"nav"}>
-          <NavBar />
+          <NavBar searchGame={searchGame} />
         </GridItem>
 
         <GridItem
