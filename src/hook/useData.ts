@@ -22,9 +22,7 @@ const  useData=<T>(endpoint:string, requestConfig?:AxiosRequestConfig, dependenc
   setIsLoading(true);
       apiClient.get<ApiResponse<T>>(endpoint, {...requestConfig}).then((res) => {
           setIsLoading(false);
-          setData(res.data.results);
-          console.log(data);
-          
+          setData(res.data.results);          
         })
         .catch((err) => {
           setIsLoading(false);

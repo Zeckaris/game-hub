@@ -53,6 +53,7 @@ function GameGrid({
                     released={game.released}
                     parent_platforms={game.parent_platforms}
                     metacritic={game.metacritic}
+                    rating_top={game.rating_top}
                   />
                 </GamesCardContainer>
               );

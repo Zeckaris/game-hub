@@ -15,6 +15,7 @@ export interface GamesInterface {
     released: string;
     parent_platforms:{platform:ParentPlatform}[];
     metacritic: number;
+    rating_top:number;
 }
 
 
