@@ -29,8 +29,8 @@ function GameGenere({ updateSelectedGamesGenere, gameQuery }: Props) {
   }
   return (
     <Box padding="2">
-      <Text fontWeight="bold" fontSize={24} margin={1}>
-        Generes
+      <Text fontWeight="bold" fontSize={24} mb={8}>
+        Genre
       </Text>
       {errorGenere && <span>{errorGenere}</span>}
       <List.Root gap={3} height={"100vh"} listStyleType="none">
@@ -38,6 +38,7 @@ function GameGenere({ updateSelectedGamesGenere, gameQuery }: Props) {
           <ListItem key={g.id}>
             <HStack height={35} border={3}>
               <Image
+                objectFit={"cover"}
                 src={g.image_background}
                 boxSize={"40px"}
                 borderRadius={3}
@@ -45,6 +46,7 @@ function GameGenere({ updateSelectedGamesGenere, gameQuery }: Props) {
               />
 
               <Button
+                whiteSpace={"normal"}
                 fontWeight={gameQuery.generes?.id === g.id ? "700" : "200"}
                 variant="ghost"
                 onClick={() => {

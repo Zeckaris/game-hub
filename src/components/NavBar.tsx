@@ -9,7 +9,7 @@ interface Props {
 function NavBar({ searchGame }: Props) {
   return (
     <div>
-      <HStack justifyContent={"space-between"} padding={"10px"}>
+      <HStack justifyContent={"space-between"} padding={"8px"}>
         <Image src={logo} boxSize={"60px"} />
         <SearchBar searchGame={searchGame} />
         <ColorModeButton />

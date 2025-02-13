@@ -45,7 +45,7 @@ function App() {
         <GridItem
           area={"aside"}
           display={{ base: "none", lg: "block" }}
-          width={250}
+          width={230}
         >
           <GameGenere
             updateSelectedGamesGenere={updateSelectedGamesGenere}

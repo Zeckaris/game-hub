@@ -1,5 +1,5 @@
 import { GamesInterface } from "../hook/useGames";
-import { Card, Image, HStack } from "@chakra-ui/react";
+import { Card, Image, HStack, Box } from "@chakra-ui/react";
 import PlatfromMapping from "./PlatfromMapping";
 import MetaCriticRating from "./MetaCriticRating";
 import getCropedImage from "../services/image-service";
@@ -15,8 +15,11 @@ function GamesCard({
       <Image src={getCropedImage(background_image)} alt={name + " image"} />
       <Card.Body gap="1">
         <Card.Title>{name}</Card.Title>
-        <HStack padding={2} overflowX="auto">
-          <PlatfromMapping parent_platforms={parent_platforms} />
+        <HStack padding={2} overflowX="auto" justifyContent={"space-between"}>
+          <HStack>
+            <PlatfromMapping parent_platforms={parent_platforms} />
+          </HStack>
+
           <MetaCriticRating metacritic={metacritic} />
         </HStack>
       </Card.Body>
