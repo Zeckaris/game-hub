@@ -1,8 +1,6 @@
-import React from "react";
 import { ParentPlatform } from "../hook/useGames";
-import { HStack, Icon, Text } from "@chakra-ui/react";
+import { HStack, Icon } from "@chakra-ui/react";
 import {
-  FaWindows,
   FaApple,
   FaXbox,
   FaLinux,
@@ -12,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { SiNintendo } from "react-icons/si";
 import { MdPhoneIphone } from "react-icons/md";
-import { BsGlobe } from "react-icons/bs";
+
 import { IconType } from "react-icons";
 
 interface Props {
@@ -33,9 +31,9 @@ function PlatfromMapping({ parent_platforms }: Props) {
 
   return (
     <>
-      {parent_platforms.map((p) => {
+      {parent_platforms.map((p, index) => {
         return (
-          <HStack padding={1}>
+          <HStack padding={1} key={index}>
             {p.platform.name in platformIcons ? (
               <Icon
                 key={p.platform.id}

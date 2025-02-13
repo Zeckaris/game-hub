@@ -6,7 +6,6 @@ import {
   MenuContent,
   MenuItem,
 } from "@chakra-ui/react";
-import React from "react";
 import { BsChevronDoubleDown } from "react-icons/bs";
 
 interface Props {
@@ -30,9 +29,10 @@ function SortGames({ orderBySelection }: Props) {
         </Button>
       </MenuTrigger>
       <MenuContent width={"md"}>
-        {sortingFields.map((field) => (
+        {sortingFields.map((field, i) => (
           <MenuItem
             value={field}
+            key={i}
             onClick={() => {
               orderBySelection(field);
             }}

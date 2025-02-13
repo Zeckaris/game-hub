@@ -5,10 +5,8 @@ import MetaCriticRating from "./MetaCriticRating";
 import getCropedImage from "../services/image-service";
 
 function GamesCard({
-  id,
   name,
   background_image,
-  released,
   parent_platforms,
   metacritic,
 }: GamesInterface) {
