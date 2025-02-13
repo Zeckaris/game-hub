@@ -1,4 +1,3 @@
-import useData from "./useData";
 import genereD from "../data/genreData";
 
 
