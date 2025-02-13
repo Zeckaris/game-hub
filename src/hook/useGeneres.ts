@@ -1,4 +1,5 @@
 import useData from "./useData";
+import genereD from "../data/genreData";
 
 
 export interface GenereInterface {
@@ -16,9 +17,11 @@ export interface GameGenereResult {
 
 
 const useGeneres=()=>{
-  const {data:genere, setData:setGenere, error:errorGenere, isLoading}= useData<GenereInterface>("genres");
+  const genere=  genereD;
+  const errorGenere= "";
+  const isLoading= false;
 
-  return {genere,setGenere, errorGenere, isLoading}
+  return {genere, errorGenere, isLoading}
 
 }
 
