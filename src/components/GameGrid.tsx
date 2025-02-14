@@ -36,7 +36,11 @@ function GameGrid({
           <Platform updateSelectedGamesPlatform={updateSelectedGamesPlatform} />{" "}
           <SortGames orderBySelection={orderBySelection} />
         </Box>
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} gap={10} padding={"10px"}>
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3 }}
+          gap={{ base: 4, md: 6, lg: 10 }}
+          p={4}
+        >
           {isLoading
             ? skeletonCount.map((i) => (
                 <GamesCardContainer key={i}>
