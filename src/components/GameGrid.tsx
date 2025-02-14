@@ -37,9 +37,10 @@ function GameGrid({
           <SortGames orderBySelection={orderBySelection} />
         </Box>
         <SimpleGrid
-          columns={{ sm: 1, md: 2, lg: 3 }}
-          gap={{ base: 4, md: 6, lg: 10 }}
-          p={4}
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+          gap={6}
+          minChildWidth="300px"
+          padding="10px"
         >
           {isLoading
             ? skeletonCount.map((i) => (

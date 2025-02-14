@@ -36,6 +36,7 @@ function App() {
   return (
     <>
       <Grid
+        templateColumns={{ base: "1fr", lg: "230px 1fr" }}
         templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
       >
         <GridItem area={"nav"}>
