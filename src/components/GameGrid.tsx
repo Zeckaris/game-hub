@@ -27,7 +27,7 @@ function GameGrid({
     return <Text> {error} </Text>;
   } else {
     return (
-      <div>
+      <Box maxW={"100%"}>
         <Box textAlign={"center"}>
           <Heading size="4xl">{gamesHeading} Games</Heading>{" "}
         </Box>
@@ -37,10 +37,10 @@ function GameGrid({
           <SortGames orderBySelection={orderBySelection} />
         </Box>
         <SimpleGrid
-          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-          gap={6}
-          minChildWidth="300px"
-          padding="10px"
+          columns={{ sm: 1, md: 2, lg: 2, xl: 3 }}
+          gap={5}
+          padding={"10px"}
+          justifyContent={"center"}
         >
           {isLoading
             ? skeletonCount.map((i) => (
@@ -65,7 +65,7 @@ function GameGrid({
                 );
               })}
         </SimpleGrid>
-      </div>
+      </Box>
     );
   }
 }

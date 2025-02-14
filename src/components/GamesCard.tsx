@@ -13,8 +13,12 @@ function GamesCard({
   rating_top,
 }: GamesInterface) {
   return (
-    <Card.Root height="95%">
-      <Image src={getCropedImage(background_image)} alt={name + " image"} />
+    <Card.Root height="95%" maxW={"100%"}>
+      <Image
+        src={getCropedImage(background_image)}
+        alt={name + " image"}
+        maxW={"100%"}
+      />
       <Card.Body gap="1">
         <HStack padding={2} overflowX="auto" justifyContent={"space-between"}>
           <HStack>

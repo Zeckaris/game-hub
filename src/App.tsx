@@ -35,26 +35,19 @@ function App() {
   };
   return (
     <>
-      <Grid
-        templateColumns={{ base: "1fr", lg: "230px 1fr" }}
-        templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
-      >
-        <GridItem area={"nav"}>
+      <Grid>
+        <GridItem colSpan={15}>
           <NavBar searchGame={searchGame} />
         </GridItem>
 
-        <GridItem
-          area={"aside"}
-          display={{ base: "none", lg: "block" }}
-          width={230}
-        >
+        <GridItem colSpan={1} display={{ base: "none", lg: "block" }}>
           <GameGenere
             updateSelectedGamesGenere={updateSelectedGamesGenere}
             gameQuery={gameQuery}
           />
         </GridItem>
 
-        <GridItem area={"main"} padding={2}>
+        <GridItem colSpan={14} padding={2}>
           <GameGrid
             gameQuery={gameQuery}
             updateSelectedGamesPlatform={updateSelectedGamesPlatform}
